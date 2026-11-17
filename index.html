@@ -272,6 +272,30 @@ main{position:relative;z-index:1}
 }
 @media (max-width:420px){.portrait{max-width:190px}.portrait .badge{font-size:.68rem;padding:6px 10px}}
 
+[hidden]{display:none!important}
+/* Krishna Hotel screenshots */
+.site-shots{display:flex;align-items:center;justify-content:center;padding:22px 22px 58px}
+.browser{width:100%;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:var(--ink);box-shadow:0 20px 50px -20px color-mix(in srgb,var(--peri) 45%,transparent)}
+.browser .bar{display:flex;align-items:center;gap:6px;padding:9px 12px;border-bottom:1px solid var(--line);background:var(--panel)}
+.browser .bar i{width:8px;height:8px;border-radius:50%;background:var(--line)}
+.browser .bar i:first-child{background:var(--peri)}
+.browser .bar span{margin-left:8px;flex:1;min-width:0;font-family:var(--font-mono);font-size:.7rem;color:var(--muted);background:var(--ink-2);border-radius:999px;padding:3px 10px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.shots{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;padding:8px}
+.shot{position:relative;display:block;padding:0;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--ink-2);cursor:zoom-in;aspect-ratio:4/3;animation:shotIn .8s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--k)*90ms + 200ms)}
+.shot img{display:block;width:100%;height:100%;object-fit:cover;object-position:top center;transition:transform .6s cubic-bezier(.2,.8,.2,1),filter .4s ease;filter:saturate(.92)}
+.shot span{position:absolute;left:6px;right:6px;bottom:6px;font-family:var(--font-mono);font-size:.62rem;color:var(--fg);background:color-mix(in srgb,var(--ink) 80%,transparent);border-radius:999px;padding:3px 8px;opacity:0;transform:translateY(6px);transition:opacity .25s ease,transform .25s ease;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:left}
+.shot:hover img,.shot:focus-visible img{transform:scale(1.12);filter:none}
+.shot:hover span,.shot:focus-visible span{opacity:1;transform:none}
+.shot:hover{border-color:var(--saffron)}
+@keyframes shotIn{from{opacity:0;transform:translateY(14px) scale(.96)}}
+.lightbox{position:fixed;inset:0;z-index:60;display:grid;place-items:center;padding:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));background:color-mix(in srgb,var(--ink) 88%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.lightbox figure{margin:0;max-width:min(1000px,100%);display:grid;gap:12px}
+.lightbox img{width:100%;height:auto;max-height:78vh;object-fit:contain;border-radius:14px;border:1px solid var(--line);animation:shotIn .4s ease both}
+.lightbox figcaption{display:flex;justify-content:space-between;align-items:center;gap:12px;font-family:var(--font-mono);font-size:.8rem;color:var(--muted)}
+.lightbox button{font:inherit;font-weight:700;border:1px solid var(--line);background:var(--panel);color:var(--fg);border-radius:999px;padding:8px 14px;cursor:pointer}
+.lightbox .nav-btns{display:flex;gap:8px}
+@media (max-width:420px){.site-shots{padding:14px 14px 54px}.shots{gap:6px;padding:6px}}
+
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{animation:none!important;transition:none!important}
@@ -402,7 +426,7 @@ main{position:relative;z-index:1}
           </div>
         </article>
         <article class="project tilt" data-reveal>
-          <div class="art"><canvas data-art="web" aria-hidden="true"></canvas><span class="label">Full stack · Responsive</span></div>
+          <div class="art site-shots"><div class="browser"><div class="bar"><i></i><i></i><i></i><span>krishnaahotel.in</span></div><div class="shots"><button type="button" class="shot" data-full="img/krishna-1.jpg" data-cap="Home page hero" style="--k:0"><img src="img/krishna-1.jpg" alt="Krishna Hotel website: home page hero" loading="lazy" decoding="async" width="1000" height="750"><span>Home page hero</span></button><button type="button" class="shot" data-full="img/krishna-2.jpg" data-cap="Room listings" style="--k:1"><img src="img/krishna-2.jpg" alt="Krishna Hotel website: room listings" loading="lazy" decoding="async" width="1000" height="750"><span>Room listings</span></button><button type="button" class="shot" data-full="img/krishna-3.jpg" data-cap="Photo gallery" style="--k:2"><img src="img/krishna-3.jpg" alt="Krishna Hotel website: photo gallery" loading="lazy" decoding="async" width="1000" height="750"><span>Photo gallery</span></button><button type="button" class="shot" data-full="img/krishna-4.jpg" data-cap="Halls & events" style="--k:3"><img src="img/krishna-4.jpg" alt="Krishna Hotel website: halls & events" loading="lazy" decoding="async" width="1000" height="750"><span>Halls & events</span></button><button type="button" class="shot" data-full="img/krishna-5.jpg" data-cap="Event booking form" style="--k:4"><img src="img/krishna-5.jpg" alt="Krishna Hotel website: event booking form" loading="lazy" decoding="async" width="1000" height="750"><span>Event booking form</span></button><button type="button" class="shot" data-full="img/krishna-6.jpg" data-cap="Location map" style="--k:5"><img src="img/krishna-6.jpg" alt="Krishna Hotel website: location map" loading="lazy" decoding="async" width="1000" height="750"><span>Location map</span></button></div></div><span class="label">Full stack · Responsive</span></div>
           <div class="body">
             <div class="kind">Hotel website</div>
             <h3>Krishna Hotel</h3>
@@ -530,6 +554,9 @@ main{position:relative;z-index:1}
   </div>
 </footer>
 
+<div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true" aria-label="Krishna Hotel screenshot">
+  <figure><img id="lb-img" alt=""><figcaption><span id="lb-cap"></span><span class="nav-btns"><button type="button" id="lb-prev">← Prev</button><button type="button" id="lb-next">Next →</button><button type="button" id="lb-close">Close</button></span></figcaption></figure>
+</div>
 <script>
 (function(){
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -717,6 +744,16 @@ main{position:relative;z-index:1}
   if(por&&fine&&!reduce){var fr=por.querySelector('.frame');
     por.parentElement.addEventListener('pointermove',function(e){var r=por.getBoundingClientRect(),x=(e.clientX-(r.left+r.width/2))/innerWidth,y=(e.clientY-(r.top+r.height/2))/innerHeight;fr.style.setProperty('--pry',(x*14)+'deg');fr.style.setProperty('--prx',(-y*14)+'deg');});
     por.parentElement.addEventListener('pointerleave',function(){fr.style.setProperty('--pry','0deg');fr.style.setProperty('--prx','0deg');});}
+  /* screenshot lightbox */
+  var shots=[].slice.call(document.querySelectorAll('.shot')),lbx=document.getElementById('lightbox'),lbi=document.getElementById('lb-img'),lbc=document.getElementById('lb-cap'),cur=0,lastFocus=null;
+  function showShot(i){cur=(i+shots.length)%shots.length;var b=shots[cur];lbi.src=b.dataset.full;lbi.alt=b.querySelector('img').alt;lbc.textContent=(cur+1)+' / '+shots.length+' · '+b.dataset.cap;}
+  shots.forEach(function(b,i){b.addEventListener('click',function(){lastFocus=b;showShot(i);lbx.hidden=false;document.getElementById('lb-close').focus();});});
+  function closeLb(){lbx.hidden=true;if(lastFocus)lastFocus.focus();}
+  document.getElementById('lb-close').addEventListener('click',closeLb);
+  document.getElementById('lb-prev').addEventListener('click',function(){showShot(cur-1);});
+  document.getElementById('lb-next').addEventListener('click',function(){showShot(cur+1);});
+  lbx.addEventListener('click',function(e){if(e.target===lbx)closeLb();});
+  document.addEventListener('keydown',function(e){if(lbx.hidden)return;if(e.key==='Escape')closeLb();if(e.key==='ArrowRight')showShot(cur+1);if(e.key==='ArrowLeft')showShot(cur-1);});
   document.getElementById('year').textContent=new Date().getFullYear();
   onScroll();
 })();
